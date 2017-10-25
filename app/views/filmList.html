@@ -1,0 +1,50 @@
+<form action="" name="filmListForm">
+    <h1>Film details</h1>
+    <div class="container">
+        <div class="row form-group" ng-hide="filmListVM.showDetailData">
+            <input type="text" ng-change="filmListVM.filterByName(film,3)" ng-model="film" placeholder="Search for birth_year">
+            <input type="text" ng-change="filmListVM.filterByName(name,0)" ng-model="name" placeholder="Search for name">
+            <input type="text" ng-change="filmListVM.filterByName(gender,1)" ng-model="gender" placeholder="Search for gender">
+            <input type="text" ng-change="filmListVM.filterByName(birth,2)" ng-model="birth" placeholder="Search for birth_year">
+        </div>
+        <div class="table-responsive row form-group" ng-hide="filmListVM.showDetailData">
+            <table class="table" id="myTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Birth_Year</th>
+                        <th>Film Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="entity in filmListVM.filmLists">
+                        <td>{{entity.name}}</td>
+                        <td>{{entity.gender}}</td>
+                        <td>{{entity.birth_year}}</td>
+                        <td>
+                            <ul ng-repeat="item in entity.films">
+                                <li> {{item}} </li>
+                            </ul>
+                        </td>
+                        <td><button type="button" ng-click="filmListVM.loadFilmDetails(entity)"><i class="fa fa-eye"></i>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container" ng-if="filmListVM.showDetailData">
+        <div class="row">
+            <strong>Name: </strong>{{filmListVM.entity.name}} <br>
+            <strong>Gender : </strong>{{filmListVM.entity.gender}}<br>
+            <strong>Birth_Year : </strong>{{filmListVM.entity.birth_year}} <br>
+            <strong>Films:</strong>
+            <ul ng-repeat="item in filmListVM.entity.films">
+                {{item}}
+            </ul>
+
+        </div>
+    </div>
+</form>
