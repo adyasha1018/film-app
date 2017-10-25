@@ -1,7 +1,8 @@
-# product-app
+# film-app
 An app describing the list and details of film  
 View Film Details  
 Film Listing  
+Search by particular field
 
 `Description about action element`  
 * view : view film details
